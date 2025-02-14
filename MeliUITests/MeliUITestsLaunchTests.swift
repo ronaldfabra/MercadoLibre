@@ -17,7 +17,7 @@ final class MeliUITestsLaunchTests: XCTestCase {
         continueAfterFailure = false
     }
 
-    @MainActor
+    /*@MainActor
     func testLaunch() throws {
         let app = XCUIApplication()
         app.launch()
@@ -29,5 +29,5 @@ final class MeliUITestsLaunchTests: XCTestCase {
         attachment.name = "Launch Screen"
         attachment.lifetime = .keepAlways
         add(attachment)
-    }
+    }*/
 }

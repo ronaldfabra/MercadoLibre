@@ -12,8 +12,8 @@ class NetworkMock<T: Decodable>: NetworkProtocol {
 
     var mockResponse: T? = nil
 
-    func request<T: Decodable>(endPoint: EndPointProtocol, type _: T.Type) async throws -> T {
-        if let mockResponse =  mockResponse as? T {
+    func request<U: Decodable>(endPoint: EndPointProtocol, type _: U.Type) async throws -> U {
+        if let mockResponse =  mockResponse as? U {
             return mockResponse
         } else {
             throw NetworkErrorType.invalidData
