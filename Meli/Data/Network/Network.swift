@@ -7,8 +7,8 @@
 
 import Foundation
 
-public class Network: NetworkProtocol {
-    public static let shared = Network()
+class Network: NetworkProtocol {
+    static let shared = Network()
     
     func request<T: Decodable>(endPoint: EndPointProtocol, type _: T.Type) async throws -> T {
         do {

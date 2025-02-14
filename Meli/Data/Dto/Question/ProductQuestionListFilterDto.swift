@@ -6,10 +6,6 @@
 //
 
 
-struct ProductQuestionListFilterDto: DTOProtocol {
+struct ProductQuestionListFilterDto: Codable {
     let offset: Int
-    
-    func toDomain() -> ProductQuestionListFilterDomainModel {
-        ProductQuestionListFilterAdapter().adapt(apiResponse: self)
-    }
 }
