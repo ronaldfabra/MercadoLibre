@@ -30,7 +30,9 @@ class FavoritesProductsViewModel: ObservableObject {
             guard let self else { return }
             self.error = .none
             do {
-                self.favorites = try self.getFavoritesProductsUseCase.execute().sorted { $0.order < $1.order }
+                self.favorites = try self.getFavoritesProductsUseCase
+                    .execute()
+                    .sorted { $0.savedDate ?? Date() < $1.savedDate ?? Date( )}
             } catch {
                 self.error = .generalError
             }

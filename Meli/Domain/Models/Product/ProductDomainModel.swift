@@ -27,6 +27,7 @@ final class ProductDomainModel: Equatable {
     @Relationship var pictures: [ProductPictureDomainModel]?
     @Attribute var productDescription: String?
     @Relationship var questions: [ProductQuestionDomainModel]?
+    @Attribute var savedDate: Date?
 
     var brand: String? {
         attributes
@@ -88,7 +89,8 @@ final class ProductDomainModel: Equatable {
         order: Int,
         pictures: [ProductPictureDomainModel]? = nil,
         productDescription: String? = nil,
-        questions: [ProductQuestionDomainModel]? = nil
+        questions: [ProductQuestionDomainModel]? = nil,
+        savedDate: Date? = nil
     ) {
         self.id = id
         self.title = title
@@ -107,5 +109,6 @@ final class ProductDomainModel: Equatable {
         self.pictures = pictures
         self.productDescription = productDescription
         self.questions = questions
+        self.savedDate = savedDate
     }
 }

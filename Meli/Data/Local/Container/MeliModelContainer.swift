@@ -53,6 +53,7 @@ extension MeliModelContainer: @preconcurrency MeliModelContainerProtocol {
     @MainActor
     func saveProduct(product: ProductDomainModel) throws {
         do {
+            product.savedDate = Date()
             modelContainer.mainContext.insert(product)
             try modelContainer.mainContext.save()
         } catch {
