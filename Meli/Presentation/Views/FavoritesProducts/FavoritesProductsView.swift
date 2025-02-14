@@ -34,11 +34,6 @@ struct FavoritesProductsView: View {
                 }
         }
     }
-
-    private func deleteItem(at offsets: IndexSet) {
-        guard let index = offsets.first else { return }
-        viewModel.deleteItem(index: index)
-    }
 }
 
 // MARK: bodyView
@@ -81,7 +76,6 @@ extension FavoritesProductsView {
                         }
                 }
             }
-            .onDelete(perform: deleteItem)
         }
     }
 }

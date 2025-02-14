@@ -80,9 +80,7 @@ extension SearchProductsView {
                             for: viewModel.products,
                             favoritesProductsViewModel: favoritesProductsViewModel,
                             onLastItemVisible: {
-                                Task {
-                                    await viewModel.loadMoreProducts()
-                                }
+                                viewModel.loadMoreProducts()
                             }
                         )
                 }

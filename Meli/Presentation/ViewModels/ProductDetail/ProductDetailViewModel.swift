@@ -9,6 +9,7 @@ import Foundation
 
 class ProductDetailViewModel: ObservableObject {
     @Published var product: ProductDomainModel
+    @Published var productDescription: ProductDescriptionDomainModel?
     @Published var questionPaging: PagingDomainModel?
     @Published var isLoading: Bool = false
     @Published var error: NetworkErrorType = .none
@@ -69,6 +70,7 @@ class ProductDetailViewModel: ObservableObject {
     
     @MainActor
     private func processDescriptionResponse(_ response: ProductDescriptionDomainModel) {
+        self.productDescription = response
         self.product.productDescription = response.plainText
         self.isLoading = false
     }

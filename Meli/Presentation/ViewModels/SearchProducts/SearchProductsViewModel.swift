@@ -141,9 +141,11 @@ extension SearchProductsViewModel {
         querySubject.send(query)
     }
     
-    func loadMoreProducts() async {
-        guard !isLoading else { return }
-        await self.searchProducts(query: querySubject.value, isNewQuery: false)
+    func loadMoreProducts() {
+        Task {
+            guard !isLoading else { return }
+            await self.searchProducts(query: querySubject.value, isNewQuery: false)
+        }
     }
     
     func onChangedSite() async {

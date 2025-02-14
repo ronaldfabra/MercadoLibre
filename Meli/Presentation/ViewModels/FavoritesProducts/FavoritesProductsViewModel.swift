@@ -37,12 +37,24 @@ class FavoritesProductsViewModel: ObservableObject {
         }
     }
 
-    func deleteItem(index: Int) {
-        guard favorites.indices.contains(index) else { return }
-        let product = favorites[index]
-        updateFavorite(product: product)
+    private func addToFavorite(product: ProductDomainModel) async {
+        do {
+            try addFavoriteProductUseCase.execute(product: product)
+        } catch {
+            self.error = .generalError
+        }
     }
 
+    private func removeFromFavorite(productId: String) async {
+        do {
+            try deleteFavoriteProductUseCase.execute(productId: productId)
+        } catch {
+            self.error = .generalError
+        }
+    }
+}
+
+extension FavoritesProductsViewModel {
     func updateFavorite(product: ProductDomainModel) {
         Task {
             if isFavorite(productId: product.id) {
@@ -51,22 +63,6 @@ class FavoritesProductsViewModel: ObservableObject {
                 await addToFavorite(product: product)
             }
             loadFavorites()
-        }
-    }
-
-    func addToFavorite(product: ProductDomainModel) async {
-        do {
-            try addFavoriteProductUseCase.execute(product: product)
-        } catch {
-            self.error = .generalError
-        }
-    }
-
-    func removeFromFavorite(productId: String) async {
-        do {
-            try deleteFavoriteProductUseCase.execute(productId: productId)
-        } catch {
-            self.error = .generalError
         }
     }
 
