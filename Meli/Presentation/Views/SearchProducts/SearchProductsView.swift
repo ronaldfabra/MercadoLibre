@@ -140,13 +140,15 @@ extension SearchProductsView {
 // MARK: skeletonView
 extension SearchProductsView {
     var skeletonView: some View {
-        VStack(spacing: Dimens.spacing20) {
-            SkeletonView().frame(height: Dimens.productImageRowSize)
-            SkeletonView().frame(height: Dimens.productImageRowSize)
-            SkeletonView().frame(height: Dimens.productImageRowSize)
-            Spacer()
+        ScrollView {
+            VStack(spacing: Dimens.spacing20) {
+                SkeletonView().frame(height: Dimens.productImageRowSize)
+                SkeletonView().frame(height: Dimens.productImageRowSize)
+                SkeletonView().frame(height: Dimens.productImageRowSize)
+                Spacer()
+            }
+            .padding()
         }
-        .padding()
     }
 }
 
