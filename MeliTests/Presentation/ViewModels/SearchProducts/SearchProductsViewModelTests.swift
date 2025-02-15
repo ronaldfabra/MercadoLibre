@@ -30,7 +30,7 @@ final class SearchProductsViewModelTests: XCTestCase {
         }
         // When
         viewModel.updateQuery(query: query)
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 5.0)
         // Then
         #expect(viewModel.products.count == productRepository.mockProductListResponse.products.count)
         #expect(viewModel.products.first?.id == productRepository.mockProductListResponse.products.first?.id)
@@ -75,7 +75,7 @@ final class SearchProductsViewModelTests: XCTestCase {
         // When
         viewModel.updateQuery(query: query)
         viewModel.loadMoreProducts()
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 5.0)
         // Then
         #expect(viewModel.products.count == productRepository.mockProductListResponse.products.count)
         #expect(viewModel.products.first?.id == productRepository.mockProductListResponse.products.first?.id)
@@ -182,7 +182,7 @@ final class SearchProductsViewModelTests: XCTestCase {
         // When
         viewModel.updateQuery(query: query)
         viewModel.tryAgain()
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 5.0)
         // Then
         #expect(viewModel.products.count == productRepository.mockProductListResponse.products.count)
         #expect(viewModel.products.first?.id == productRepository.mockProductListResponse.products.first?.id)

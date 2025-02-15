@@ -11,7 +11,7 @@ import Foundation
 class ProductRepositoryMock: ProductRepositoryProtocol {
 
     var mockProductListResponse: ProductListDomainModel = .init(
-        paging: .init(total: .zero, offset: .zero, limit: .zero),
+        paging: .init(total: 10, offset: .zero, limit: .zero),
         products: [
             .init(
                 id: "MCO1520085331",

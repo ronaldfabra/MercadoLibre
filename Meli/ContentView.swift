@@ -33,7 +33,7 @@ struct ContentView: View {
                         systemImage: MeliConstants.Icons.search
                     )
                 }
-                .accessibilityIdentifier("searchProductView")
+                .accessibilityIdentifier("searchProductsView")
 
             FavoritesProductsView()
                 .tabItem {
@@ -42,7 +42,7 @@ struct ContentView: View {
                         systemImage: MeliConstants.Icons.notFavorite
                     )
                 }
-                .accessibilityIdentifier("favoriteProductsView")
+                .accessibilityIdentifier("favoritesProductsView")
         }
     }
 }

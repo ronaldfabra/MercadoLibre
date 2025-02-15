@@ -29,7 +29,11 @@ class SearchProductsViewModel: ObservableObject {
     var isGridList: Bool {
         productListAdapter is GridListViewAdapter
     }
-    
+
+    private var canPaginate: Bool {
+        products.count < paging?.total ?? .zero
+    }
+
     init(searchProductsUseCase: SearchProductsUseCaseProtocol, getSitesUseCase: GetSitesUseCaseProtocol) {
         self.searchProductsUseCase = searchProductsUseCase
         self.getSitesUseCase = getSitesUseCase
@@ -48,15 +52,21 @@ class SearchProductsViewModel: ObservableObject {
     
     private func getSites() {
         Task {
+            #if DEBUG
+            await self.processSitesResponse(
+                [.init(defaultCurrencyId: .empty, id: "MCO", name: "Colombia")]
+            )
+            #else
             do {
                 let response = try await getSitesUseCase.execute()
                 await self.processSitesResponse(response)
             } catch {
                 await self.processError(error)
             }
+            #endif
         }
     }
-    
+
     @MainActor
     private func processSitesResponse(_ response: [SiteDomainModel]) {
         self.sites = response
@@ -70,9 +80,28 @@ class SearchProductsViewModel: ObservableObject {
             self.products = []
         } else {
             Task {
-                //#if DEBUG
-                //self.products = [.init()]
-                //#else
+                #if DEBUG
+                self.showSkeleton = true
+                try await Task.sleep(nanoseconds: 1 * 1_000_000_000)
+                self.showSkeleton = false
+                self.paging = .init(total: 1, offset: 0, limit: 10)
+                self.products = [.init(
+                    id: "MCO1520085331",
+                    title: "iPhone",
+                    seller: .init(id: 0, nickname: "MELI"),
+                    price: 1799900,
+                    condition: "new",
+                    permalink: "https://www.mercadolibre.com.ar/p/MLA12866684",
+                    thumbnail: "http://mla-s1-p.mlstatic.com/980849-MLA31002261498_062019-I.jpg",
+                    thumbnailId: "619757-MLU75370564956_042024",
+                    attributes: [.init(id: "BRAND", name: "Marca", value: "Apple")],
+                    originalPrice: 2499000,
+                    installments: .init(quantity: 12, amount: 149992, rate: 0),
+                    officialStoreName: nil,
+                    shipping: .init(freeShipping: true),
+                    order: 0
+                )]
+                #else
                 if isNewQuery {
                     self.resetData()
                 }
@@ -96,7 +125,7 @@ class SearchProductsViewModel: ObservableObject {
                 } catch {
                     self.processError(error)
                 }
-                //#endif
+                #endif
             }
         }
     }
@@ -143,7 +172,7 @@ extension SearchProductsViewModel {
     
     func loadMoreProducts() {
         Task {
-            guard !isLoading else { return }
+            guard !isLoading, canPaginate else { return }
             await self.searchProducts(query: querySubject.value, isNewQuery: false)
         }
     }

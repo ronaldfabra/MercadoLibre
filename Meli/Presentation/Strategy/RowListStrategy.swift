@@ -38,6 +38,7 @@ struct RowListStrategy: ProductListViewStrategy {
                 }
             }
                 .listStyle(.plain)
+                .accessibilityIdentifier("searchProductsListView")
         )
     }
 }

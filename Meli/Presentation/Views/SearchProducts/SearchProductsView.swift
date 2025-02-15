@@ -92,7 +92,7 @@ extension SearchProductsView {
         TextField(MeliConstants.Strings.searchProduct,
                   text: $query)
         .textFieldStyle(RoundedBorderTextFieldStyle())
-        .accessibilityIdentifier("searchProductTextfield")
+        .accessibilityIdentifier("searchProductsTextfield")
         .onChange(of: query) { _, newValue in
             viewModel.updateQuery(query: newValue)
         }
