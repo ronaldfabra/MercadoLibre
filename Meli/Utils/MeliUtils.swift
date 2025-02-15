@@ -8,7 +8,7 @@
 import Foundation
 
 class MeliUtils {
-    static func getImageUrl(from thumbnailId: String?, thumbnail: String, urlExtension: String) -> URL? {
+    static func getImageUrl(thumbnailId: String?, thumbnail: String, urlExtension: String) -> URL? {
         let updatedURL: String
         if let thumbnailId {
             updatedURL = String(

@@ -37,7 +37,7 @@ final class ProductDomainModel: Equatable {
     var thumbnailImageUrl: URL? {
         MeliUtils
             .getImageUrl(
-                from: thumbnailId,
+                thumbnailId: thumbnailId,
                 thumbnail: thumbnail,
                 urlExtension: MeliConstants.MeliURL.thumnailImageUrlExtension
             )
@@ -46,7 +46,7 @@ final class ProductDomainModel: Equatable {
     var defaultImageUrl: URL? {
         MeliUtils
             .getImageUrl(
-                from: thumbnailId,
+                thumbnailId: thumbnailId,
                 thumbnail: thumbnail,
                 urlExtension: MeliConstants.MeliURL.originalImageUrlExtension
             )
