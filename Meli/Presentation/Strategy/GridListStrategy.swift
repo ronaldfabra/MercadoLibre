@@ -38,6 +38,7 @@ struct GridListStrategy: ProductListViewStrategy {
                 }
                 .padding()
             }
+                .accessibilityIdentifier("searchProductsGridListView")
         )
     }
 }

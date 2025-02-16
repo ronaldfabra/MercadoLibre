@@ -10,16 +10,15 @@ import SwiftUI
 struct ShareButton: View {
     
     var onButtonPressed: (() -> Void)? = nil
-    
+
     var body: some View {
-        VStack(spacing: MeliConstants.Dimens.spacing10) {
-            Image(systemName: MeliConstants.Icons.share)
-                .foregroundColor(Color.black)
-        }
-        .padding(MeliConstants.Dimens.spacing10)
-        .onTapGesture {
+        Button(action: {
             onButtonPressed?()
-        }
+        }, label: {
+            Image(systemName: MeliConstants.Icons.share)
+                .padding(MeliConstants.Dimens.spacing10)
+        })
+        .foregroundColor(Color.black)
         .background(Color.gray.opacity(0.2))
         .containerShape(.circle)
     }

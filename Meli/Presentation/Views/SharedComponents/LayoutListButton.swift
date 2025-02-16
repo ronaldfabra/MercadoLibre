@@ -13,9 +13,10 @@ struct LayoutListButton: View {
     var onButtonPressed: (() -> Void)? = nil
 
     var body: some View {
-
-        HStack(spacing: MeliConstants.Dimens.spacing10) {
-            VStack(spacing: MeliConstants.Dimens.spacing10) {
+        Button(action: {
+            onButtonPressed?()
+        }, label: {
+            HStack(spacing: MeliConstants.Dimens.spacing10) {
                 ZStack {
                     Image(systemName: MeliConstants.Icons.list)
                         .opacity(isGrid ? 1 : .zero)
@@ -26,15 +27,13 @@ struct LayoutListButton: View {
                         .scaleEffect(isGrid ? .zero : 1.0)
                 }
                 .animation(.bouncy, value: isGrid)
+                Text(MeliConstants.Strings.layoutType)
+                    .font(.system(size: MeliConstants.Values.value10,
+                                  weight: .regular))
             }
-            Text(MeliConstants.Strings.layoutType)
-                .font(.system(size: MeliConstants.Values.value10,
-                              weight: .regular))
-        }
-        .onTapGesture {
-            onButtonPressed?()
-        }
+        })
         .padding(MeliConstants.Dimens.spacing8)
+        .foregroundStyle(Color.black)
         .background(Capsule().stroke(Color.black, lineWidth: 1))
         .clipShape(Capsule())
     }

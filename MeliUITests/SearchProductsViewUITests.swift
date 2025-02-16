@@ -11,17 +11,16 @@ import SwiftUI
 
 final class SearchProductsViewUITests: XCTestCase {
 
+    let app = XCUIApplication()
+
     override func setUpWithError() throws {
         continueAfterFailure = false
-
+        app.launch()
         XCUIDevice.shared.orientation = .portrait
     }
 
     @MainActor
     func testViewIsPresent() {
-        let app = XCUIApplication()
-        app.launch()
-
         let searchProductsView = app.otherElements["searchProductsView"]
         let existsPredicate = NSPredicate(format: "exists == true")
 
@@ -34,9 +33,6 @@ final class SearchProductsViewUITests: XCTestCase {
 
     @MainActor
     func testSearchTextfieldIsPresent() {
-        let app = XCUIApplication()
-        app.launch()
-
         let searchProductsView = app.otherElements["searchProductsView"]
         let searchTextField = app.textFields["searchProductsTextfield"]
         let existsPredicate = NSPredicate(format: "exists == true")
@@ -51,10 +47,7 @@ final class SearchProductsViewUITests: XCTestCase {
     }
 
     @MainActor
-    func testEmptyViewElements() {
-        let app = XCUIApplication()
-        app.launch()
-
+    func testEmptyViewIsPresent() {
         let searchProductsView = app.otherElements["searchProductsView"]
         let emptyViewTitle = app.staticTexts["Search for your favorite product and you will find details about it."]
         let existsPredicate = NSPredicate(format: "exists == true")
@@ -70,9 +63,6 @@ final class SearchProductsViewUITests: XCTestCase {
 
     @MainActor
     func testListViewIsPresent() {
-        let app = XCUIApplication()
-        app.launch()
-
         let searchProductsView = app.otherElements["searchProductsView"]
         let searchTextField = app.textFields["searchProductsTextfield"]
 
@@ -95,5 +85,41 @@ final class SearchProductsViewUITests: XCTestCase {
         waitForExpectations(timeout: 30, handler: nil)
 
         XCTAssertTrue(listView.exists)
+    }
+
+    @MainActor
+    func testGridListViewIsPresent() {
+        let searchProductsView = app.otherElements["searchProductsView"]
+        let searchTextField = app.textFields["searchProductsTextfield"]
+
+        let existsPredicate = NSPredicate(format: "exists == true")
+
+        expectation(for: existsPredicate, evaluatedWith: searchProductsView, handler: nil)
+        expectation(for: existsPredicate, evaluatedWith: searchTextField, handler: nil)
+
+        waitForExpectations(timeout: 30, handler: nil)
+
+        XCTAssertTrue(searchProductsView.exists)
+        XCTAssertTrue(searchTextField.exists)
+        searchTextField.tap()
+        searchTextField.typeText("iPhone")
+
+        let layoutListButton = app.buttons["layoutListButtonProductDetailView"]
+
+        expectation(for: existsPredicate, evaluatedWith: layoutListButton, handler: nil)
+
+        waitForExpectations(timeout: 30, handler: nil)
+
+        XCTAssertTrue(layoutListButton.exists)
+        layoutListButton.tap()
+
+        let gridListView = app.scrollViews["searchProductsGridListView"]
+
+        expectation(for: existsPredicate, evaluatedWith: gridListView, handler: nil)
+
+        waitForExpectations(timeout: 30, handler: nil)
+
+        XCTAssertTrue(gridListView.exists)
+
     }
 }

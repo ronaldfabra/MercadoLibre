@@ -39,6 +39,7 @@ struct SearchProductsView: View {
                     for: ProductDomainModel.self
                 ) { product in
                     ProductDetailView(product: product, dependencyContainer: DIContainer.shared)
+                        .accessibilityIdentifier("productDetailView")
                 }
                 .padding(.horizontal, Dimens.spacing10)
         }
@@ -111,6 +112,7 @@ extension SearchProductsView {
                     viewModel.changeListAdapter(to: GridListStrategy())
                 }
             }
+            .accessibilityIdentifier("layoutListButtonProductDetailView")
             .onChange(of: viewModel.selectedSite) { _, _ in
                 Task {
                     await viewModel.onChangedSite()

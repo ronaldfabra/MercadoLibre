@@ -9,18 +9,16 @@
 import XCTest
 
 final class ContentViewUITests: XCTestCase {
+    let app = XCUIApplication()
 
     override func setUpWithError() throws {
         continueAfterFailure = false
-
+        app.launch()
         XCUIDevice.shared.orientation = .portrait
     }
 
     @MainActor
     func testTabViewAppearsAfterLaunch() {
-        let app = XCUIApplication()
-        app.launch()
-
         let tabView = app.otherElements["tabView"]
         let existsPredicate = NSPredicate(format: "exists == true")
 

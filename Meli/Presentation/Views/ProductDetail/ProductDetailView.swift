@@ -25,6 +25,7 @@ struct ProductDetailView: View {
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $showShareSheet) {
                 ShareSheet(items: [viewModel.product.permalink])
+                    .accessibilityIdentifier("shareProductView")
             }
             .onChange(of: viewModel.error) { _, error in
                 if error != .none {
@@ -89,6 +90,7 @@ extension ProductDetailView {
                 ShareButton() {
                     showShareSheet.toggle()
                 }
+                .accessibilityIdentifier("shareButtonProductDetailView")
             }
             .font(.system(size: MeliConstants.Values.value14))
         }

@@ -9,18 +9,16 @@
 import XCTest
 
 final class FavoritesProductsViewUITests: XCTestCase {
+    let app = XCUIApplication()
 
     override func setUpWithError() throws {
         continueAfterFailure = false
-
+        app.launch()
         XCUIDevice.shared.orientation = .portrait
     }
 
     @MainActor
     func testViewIsPresent() {
-        let app = XCUIApplication()
-        app.launch()
-
         let favoritesTab = app.tabBars.buttons["Favorites"]
         let existsPredicate = NSPredicate(format: "exists == true")
 
@@ -41,10 +39,7 @@ final class FavoritesProductsViewUITests: XCTestCase {
     }
 
     @MainActor
-    func testEmptyViewElements() {
-        let app = XCUIApplication()
-        app.launch()
-
+    func testEmptyViewIsPresent() {
         let favoritesTab = app.tabBars.buttons["Favorites"]
         let existsPredicate = NSPredicate(format: "exists == true")
 
