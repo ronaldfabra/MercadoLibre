@@ -1,12 +1,12 @@
 //
-//  SiteAdapter.swift
+//  SiteMapper.swift
 //  Meli
 //
 //  Created by Ronal Fabra Jimenez on 12/02/25.
 //
 
 
-class SiteAdapter: AdapterProtocol {
+class SiteMapper: MapperProtocol {
     typealias T = SiteDto
     typealias U = SiteDomainModel
 

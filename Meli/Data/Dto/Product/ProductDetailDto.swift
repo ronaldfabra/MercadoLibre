@@ -11,6 +11,6 @@ struct ProductDetailDto: DTOProtocol {
     let pictures: [ProductPictureDto]?
 
     func toDomain() -> ProductDetailDomainModel {
-        ProductDetailAdapter().adapt(apiResponse: self)
+        ProductDetailMapper().adapt(apiResponse: self)
     }
 }

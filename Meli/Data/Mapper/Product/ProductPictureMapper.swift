@@ -1,12 +1,12 @@
 //
-//  ProductPictureAdapter.swift
+//  ProductPictureMapper.swift
 //  Meli
 //
 //  Created by Ronal Fabra Jimenez on 12/02/25.
 //
 
 
-class ProductPictureAdapter: AdapterProtocol {
+class ProductPictureMapper: MapperProtocol {
     typealias T = ProductPictureDto
     typealias U = ProductPictureDomainModel
     

@@ -1,12 +1,12 @@
 //
-//  ProductQuestionAdapter.swift
+//  ProductQuestionMapper.swift
 //  Meli
 //
 //  Created by Ronal Fabra Jimenez on 12/02/25.
 //
 
 
-class ProductQuestionAdapter: AdapterProtocol {
+class ProductQuestionMapper: MapperProtocol {
     typealias T = ProductQuestionDto
     typealias U = ProductQuestionDomainModel
 

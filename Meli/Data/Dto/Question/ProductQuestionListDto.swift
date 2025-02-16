@@ -13,6 +13,6 @@ struct ProductQuestionListDto: DTOProtocol {
     let filters: ProductQuestionListFilterDto
 
     func toDomain() -> ProductQuestionListDomainModel {
-        ProductQuestionListAdapter().adapt(apiResponse: self)
+        ProductQuestionListMapper().adapt(apiResponse: self)
     }
 }

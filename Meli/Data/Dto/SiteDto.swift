@@ -16,6 +16,6 @@ struct SiteDto: DTOProtocol {
     }
 
     func toDomain() -> SiteDomainModel {
-        SiteAdapter().adapt(apiResponse: self)
+        SiteMapper().adapt(apiResponse: self)
     }
 }

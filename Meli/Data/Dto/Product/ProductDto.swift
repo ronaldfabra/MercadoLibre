@@ -31,6 +31,6 @@ struct ProductDto: DTOProtocol {
     }
 
     func toDomain() -> ProductDomainModel {
-        ProductAdapter().adapt(apiResponse: self)
+        ProductMapper().adapt(apiResponse: self)
     }
 }

@@ -1,12 +1,12 @@
 //
-//  PagingAdapter.swift
+//  PagingMapper.swift
 //  Meli
 //
 //  Created by Ronal Fabra Jimenez on 11/02/25.
 //
 
 
-class PagingAdapter: AdapterProtocol {
+class PagingMapper: MapperProtocol {
     typealias T = PagingDto
     typealias U = PagingDomainModel
 

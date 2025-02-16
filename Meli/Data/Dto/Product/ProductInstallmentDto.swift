@@ -12,6 +12,6 @@ struct ProductInstallmentDto: DTOProtocol {
     let rate: Double
     
     func toDomain() -> ProductInstallmentDomainModel {
-        ProductInstallmentAdapter().adapt(apiResponse: self)
+        ProductInstallmentMapper().adapt(apiResponse: self)
     }
 }

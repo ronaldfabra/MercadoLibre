@@ -1,12 +1,12 @@
 //
-//  ProductAttributeAdapter.swift
+//  ProductAttributeMapper.swift
 //  Meli
 //
 //  Created by Ronal Fabra Jimenez on 11/02/25.
 //
 
 
-class ProductAttributeAdapter: AdapterProtocol {
+class ProductAttributeMapper: MapperProtocol {
     typealias T = ProductAttributeDto
     typealias U = ProductAttributeDomainModel
     

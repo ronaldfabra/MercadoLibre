@@ -14,6 +14,6 @@ struct ProductShippingDto: DTOProtocol {
     }
     
     func toDomain() -> ProductShippingDomainModel {
-        ProductShippingAdapter().adapt(apiResponse: self)
+        ProductShippingMapper().adapt(apiResponse: self)
     }
 }

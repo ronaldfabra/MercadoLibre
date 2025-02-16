@@ -1,12 +1,12 @@
 //
-//  SellerAdapter.swift
+//  SellerMapper.swift
 //  Meli
 //
 //  Created by Ronal Fabra Jimenez on 11/02/25.
 //
 
 
-class SellerAdapter: AdapterProtocol {
+class SellerMapper: MapperProtocol {
     typealias T = SellerDto
     typealias U = SellerDomainModel
 

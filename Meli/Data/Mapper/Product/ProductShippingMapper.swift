@@ -1,12 +1,12 @@
 //
-//  ProductShippingAdapter.swift
+//  ProductShippingMapper.swift
 //  Meli
 //
 //  Created by Ronal Fabra Jimenez on 11/02/25.
 //
 
 
-class ProductShippingAdapter: AdapterProtocol {
+class ProductShippingMapper: MapperProtocol {
     typealias T = ProductShippingDto
     typealias U = ProductShippingDomainModel
 

@@ -11,6 +11,6 @@ struct SellerDto: DTOProtocol {
     let nickname: String?
 
     func toDomain() -> SellerDomainModel {
-        SellerAdapter().adapt(apiResponse: self)
+        SellerMapper().adapt(apiResponse: self)
     }
 }

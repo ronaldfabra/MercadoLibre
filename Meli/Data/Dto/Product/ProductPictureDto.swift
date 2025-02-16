@@ -16,6 +16,6 @@ struct ProductPictureDto: DTOProtocol {
     }
 
     func toDomain() -> ProductPictureDomainModel {
-        ProductPictureAdapter().adapt(apiResponse: self)
+        ProductPictureMapper().adapt(apiResponse: self)
     }
 }

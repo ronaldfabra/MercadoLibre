@@ -12,6 +12,6 @@ struct PagingDto: DTOProtocol {
     let limit: Int
 
     func toDomain() -> PagingDomainModel {
-        PagingAdapter().adapt(apiResponse: self)
+        PagingMapper().adapt(apiResponse: self)
     }
 }
