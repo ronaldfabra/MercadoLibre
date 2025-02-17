@@ -32,6 +32,7 @@ struct FavoritesProductsView: View {
                         toastManager.hideToast()
                     }
                 }
+                .navigationBar(.yellow)
         }
     }
 }

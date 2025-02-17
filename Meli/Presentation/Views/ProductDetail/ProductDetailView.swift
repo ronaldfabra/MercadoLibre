@@ -23,6 +23,7 @@ struct ProductDetailView: View {
         bodyView
             .navigationTitle(MeliConstants.Strings.productDetail)
             .navigationBarTitleDisplayMode(.inline)
+            .navigationBar(.yellow)
             .sheet(isPresented: $showShareSheet) {
                 ShareSheet(items: [viewModel.product.permalink])
                     .accessibilityIdentifier("shareProductView")
@@ -321,6 +322,7 @@ extension ProductDetailView {
         }
         .navigationTitle(MeliConstants.Strings.attributes)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBar(.yellow)
     }
 }
 
@@ -333,6 +335,7 @@ extension ProductDetailView {
         }
         .navigationTitle(MeliConstants.Strings.questions)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBar(.yellow)
     }
 }
 

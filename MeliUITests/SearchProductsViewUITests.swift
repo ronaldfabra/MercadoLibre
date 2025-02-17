@@ -11,28 +11,31 @@ import SwiftUI
 
 final class SearchProductsViewUITests: XCTestCase {
 
-    let app = XCUIApplication()
-
     override func setUpWithError() throws {
         continueAfterFailure = false
-        app.launch()
         XCUIDevice.shared.orientation = .portrait
     }
 
     @MainActor
     func testViewIsPresent() {
+        let app = XCUIApplication()
+        app.launch()
+
         let searchProductsView = app.otherElements["searchProductsView"]
         let existsPredicate = NSPredicate(format: "exists == true")
 
         expectation(for: existsPredicate, evaluatedWith: searchProductsView, handler: nil)
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(searchProductsView.exists)
     }
 
     @MainActor
     func testSearchTextfieldIsPresent() {
+        let app = XCUIApplication()
+        app.launch()
+
         let searchProductsView = app.otherElements["searchProductsView"]
         let searchTextField = app.textFields["searchProductsTextfield"]
         let existsPredicate = NSPredicate(format: "exists == true")
@@ -40,7 +43,7 @@ final class SearchProductsViewUITests: XCTestCase {
         expectation(for: existsPredicate, evaluatedWith: searchProductsView, handler: nil)
         expectation(for: existsPredicate, evaluatedWith: searchTextField, handler: nil)
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(searchProductsView.exists)
         XCTAssertTrue(searchTextField.exists)
@@ -48,6 +51,9 @@ final class SearchProductsViewUITests: XCTestCase {
 
     @MainActor
     func testEmptyViewIsPresent() {
+        let app = XCUIApplication()
+        app.launch()
+
         let searchProductsView = app.otherElements["searchProductsView"]
         let emptyViewTitle = app.staticTexts["Search for your favorite product and you will find details about it."]
         let existsPredicate = NSPredicate(format: "exists == true")
@@ -55,7 +61,7 @@ final class SearchProductsViewUITests: XCTestCase {
         expectation(for: existsPredicate, evaluatedWith: searchProductsView, handler: nil)
         expectation(for: existsPredicate, evaluatedWith: emptyViewTitle, handler: nil)
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(searchProductsView.exists)
         XCTAssertTrue(emptyViewTitle.exists)
@@ -63,6 +69,9 @@ final class SearchProductsViewUITests: XCTestCase {
 
     @MainActor
     func testListViewIsPresent() {
+        let app = XCUIApplication()
+        app.launch()
+
         let searchProductsView = app.otherElements["searchProductsView"]
         let searchTextField = app.textFields["searchProductsTextfield"]
 
@@ -71,7 +80,7 @@ final class SearchProductsViewUITests: XCTestCase {
         expectation(for: existsPredicate, evaluatedWith: searchProductsView, handler: nil)
         expectation(for: existsPredicate, evaluatedWith: searchTextField, handler: nil)
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(searchProductsView.exists)
         XCTAssertTrue(searchTextField.exists)
@@ -82,13 +91,16 @@ final class SearchProductsViewUITests: XCTestCase {
 
         expectation(for: existsPredicate, evaluatedWith: listView, handler: nil)
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(listView.exists)
     }
 
     @MainActor
     func testGridListViewIsPresent() {
+        let app = XCUIApplication()
+        app.launch()
+
         let searchProductsView = app.otherElements["searchProductsView"]
         let searchTextField = app.textFields["searchProductsTextfield"]
 

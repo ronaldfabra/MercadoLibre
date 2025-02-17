@@ -23,12 +23,6 @@ struct SearchProductsView: View {
         )
     }
 
-    init() {
-        self._viewModel = StateObject(
-            wrappedValue: SearchProductsViewModelBuilder.make()
-        )
-    }
-
     var body: some View {
         NavigationStack {
             contentView
@@ -41,7 +35,9 @@ struct SearchProductsView: View {
                     ProductDetailView(product: product, dependencyContainer: DIContainer.shared)
                         .accessibilityIdentifier("productDetailView")
                 }
+                .padding(.top, Dimens.spacing10)
                 .padding(.horizontal, Dimens.spacing10)
+                .navigationBar(.yellow)
         }
         .onAppear {
             locationManager.requestLocationPermission()

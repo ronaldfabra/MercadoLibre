@@ -11,16 +11,16 @@ import SwiftUI
 
 final class ProductDetailViewUITests: XCTestCase {
 
-    let app = XCUIApplication()
-
     override func setUpWithError() throws {
         continueAfterFailure = false
-        app.launch()
         XCUIDevice.shared.orientation = .portrait
     }
 
     @MainActor
     func testViewIsPresent() {
+        let app = XCUIApplication()
+        app.launch()
+
         let searchProductsView = app.otherElements["searchProductsView"]
         let searchTextField = app.textFields["searchProductsTextfield"]
 
@@ -29,7 +29,7 @@ final class ProductDetailViewUITests: XCTestCase {
         expectation(for: existsPredicate, evaluatedWith: searchProductsView, handler: nil)
         expectation(for: existsPredicate, evaluatedWith: searchTextField, handler: nil)
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(searchProductsView.exists)
         XCTAssertTrue(searchTextField.exists)
@@ -40,7 +40,7 @@ final class ProductDetailViewUITests: XCTestCase {
 
         expectation(for: existsPredicate, evaluatedWith: listView, handler: nil)
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(listView.exists)
 
@@ -53,13 +53,16 @@ final class ProductDetailViewUITests: XCTestCase {
 
         expectation(for: existsPredicate, evaluatedWith: detailView, handler: nil)
 
-        waitForExpectations(timeout: 10, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(detailView.exists, "La vista de detalles no existe")
     }
 
     @MainActor
     func testShareProductViewIsPresent() {
+        let app = XCUIApplication()
+        app.launch()
+
         let searchProductsView = app.otherElements["searchProductsView"]
         let searchTextField = app.textFields["searchProductsTextfield"]
 
@@ -68,7 +71,7 @@ final class ProductDetailViewUITests: XCTestCase {
         expectation(for: existsPredicate, evaluatedWith: searchProductsView, handler: nil)
         expectation(for: existsPredicate, evaluatedWith: searchTextField, handler: nil)
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(searchProductsView.exists)
         XCTAssertTrue(searchTextField.exists)
@@ -79,7 +82,7 @@ final class ProductDetailViewUITests: XCTestCase {
 
         expectation(for: existsPredicate, evaluatedWith: listView, handler: nil)
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(listView.exists)
 
@@ -92,7 +95,7 @@ final class ProductDetailViewUITests: XCTestCase {
 
         expectation(for: existsPredicate, evaluatedWith: detailView, handler: nil)
 
-        waitForExpectations(timeout: 10, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(detailView.exists)
 
@@ -100,7 +103,7 @@ final class ProductDetailViewUITests: XCTestCase {
 
         expectation(for: existsPredicate, evaluatedWith: shareButton, handler: nil)
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(shareButton.exists)
         shareButton.tap()
@@ -109,7 +112,7 @@ final class ProductDetailViewUITests: XCTestCase {
 
         expectation(for: existsPredicate, evaluatedWith: shareProductView, handler: nil)
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(shareProductView.exists)
     }

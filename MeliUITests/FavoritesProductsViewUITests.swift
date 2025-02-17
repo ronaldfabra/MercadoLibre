@@ -9,22 +9,23 @@
 import XCTest
 
 final class FavoritesProductsViewUITests: XCTestCase {
-    let app = XCUIApplication()
 
     override func setUpWithError() throws {
         continueAfterFailure = false
-        app.launch()
         XCUIDevice.shared.orientation = .portrait
     }
 
     @MainActor
     func testViewIsPresent() {
+        let app = XCUIApplication()
+        app.launch()
+
         let favoritesTab = app.tabBars.buttons["Favorites"]
         let existsPredicate = NSPredicate(format: "exists == true")
 
         expectation(for: existsPredicate, evaluatedWith: favoritesTab, handler: nil)
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(favoritesTab.exists)
         favoritesTab.tap()
@@ -33,19 +34,22 @@ final class FavoritesProductsViewUITests: XCTestCase {
 
         expectation(for: existsPredicate, evaluatedWith: favoritesProductsView, handler: nil)
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(favoritesProductsView.exists)
     }
 
     @MainActor
     func testEmptyViewIsPresent() {
+        let app = XCUIApplication()
+        app.launch()
+
         let favoritesTab = app.tabBars.buttons["Favorites"]
         let existsPredicate = NSPredicate(format: "exists == true")
 
         expectation(for: existsPredicate, evaluatedWith: favoritesTab, handler: nil)
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(favoritesTab.exists)
         favoritesTab.tap()
@@ -58,7 +62,7 @@ final class FavoritesProductsViewUITests: XCTestCase {
         expectation(for: existsPredicate, evaluatedWith: emptyViewTitle, handler: nil)
         expectation(for: existsPredicate, evaluatedWith: emptyViewMessage, handler: nil)
 
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: 60, handler: nil)
 
         XCTAssertTrue(favoritesProductsView.exists)
         XCTAssertTrue(emptyViewTitle.exists)

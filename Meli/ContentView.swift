@@ -16,10 +16,12 @@ struct ContentView: View {
         self._favoritesProductsViewModel = StateObject(
             wrappedValue: dependencyContainer.getFavoritesProductsViewModel()
         )
+        UITabBar.appearance().backgroundColor = UIColor.white
     }
 
     var body: some View {
         tabView
+            .accentColor(.black)
             .accessibilityIdentifier("tabView")
             .environmentObject(favoritesProductsViewModel)
     }
@@ -49,4 +51,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView(dependencyContainer: DIContainer.shared)
+        .environmentObject(ToastManager())
 }

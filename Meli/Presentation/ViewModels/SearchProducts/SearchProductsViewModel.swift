@@ -82,7 +82,7 @@ class SearchProductsViewModel: ObservableObject {
             Task {
                 #if DEBUG
                 self.showSkeleton = true
-                try await Task.sleep(nanoseconds: 1 * 1_000_000_000)
+                try await Task.sleep(nanoseconds: 1 * 500_000_000)
                 self.showSkeleton = false
                 self.paging = .init(total: 1, offset: 0, limit: 10)
                 self.products = [.init(
