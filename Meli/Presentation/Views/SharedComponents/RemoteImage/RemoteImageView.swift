@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct RemoteImageView: View {
-    @StateObject private var imageLoader = ImageLoader()
     var url: URL
-    
+
     var body: some View {
-        Group {
-            if let image = imageLoader.image {
-                Image(uiImage: image)
+        AsyncImage(url: url) { phase in
+            switch phase {
+            case .failure:
+                EmptyView()
+            case .success(let image):
+                image
                     .resizable()
-            } else {
+            default:
                 ProgressView()
             }
-        }
-        .onAppear {
-            imageLoader.load(from: url)
         }
     }
 }
